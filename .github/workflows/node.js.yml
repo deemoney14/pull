@@ -23,6 +23,3 @@ jobs:
 
     - name: Run tests
       run: npm test  # Run the tests defined in the package.json
-
-    - name: Build the application
-      run: npm run build
