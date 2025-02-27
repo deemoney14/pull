@@ -1,0 +1,28 @@
+name: Node.js CI
+
+on:
+  pull_request:
+    branches:
+      - main  # This triggers the workflow on pull requests targeting the `main` branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu image for the job
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2  # Check out the repository code to the runner
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3  # Set up Node.js using the official action
+      with:
+        node-version: '16'  # You can specify the version of Node.js you want to use, like '16'
+
+    - name: Install dependencies
+      run: npm install  # Install the dependencies using npm
+
+    - name: Run tests
+      run: npm test  # Run the tests defined in the package.json
+
+    - name: Build the application
+      run: npm run build
